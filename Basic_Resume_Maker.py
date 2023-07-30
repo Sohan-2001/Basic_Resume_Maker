@@ -440,7 +440,7 @@ Project1_Name=Entry(ws,
            width=30
            
            )
-Project1_Name.place(x=7,y=320,height=25)
+Project1_Name.place(x=50,y=320,height=25)
 Project1_Name.insert(0,'Enter Your Best Project Name')
 Project1_TechStack=Entry(ws,
            bg='light grey',
@@ -449,7 +449,7 @@ Project1_TechStack=Entry(ws,
            width=30
            
            )
-Project1_TechStack.place(x=295,y=320,height=25)
+Project1_TechStack.place(x=598,y=320,height=25)
 Project1_TechStack.insert(0,'Tech Stack Used')
 Project1_Tools=Entry(ws,
            bg='light grey',
@@ -458,7 +458,7 @@ Project1_Tools=Entry(ws,
            width=30
            
            )
-Project1_Tools.place(x=583,y=320,height=25)
+Project1_Tools.place(x=1123,y=320,height=25)
 Project1_Tools.insert(0,'Tools Used')
 Project1_Summary=Entry(ws,
            bg='light grey',
@@ -477,7 +477,7 @@ Project2_Name=Entry(ws,
            width=30
            
            )
-Project2_Name.place(x=7,y=405,height=25)
+Project2_Name.place(x=50,y=405,height=25)
 Project2_Name.insert(0,'Enter Your Another Best Project Name')
 Project2_TechStack=Entry(ws,
            bg='light grey',
@@ -486,7 +486,7 @@ Project2_TechStack=Entry(ws,
            width=30
            
            )
-Project2_TechStack.place(x=295,y=405,height=25)
+Project2_TechStack.place(x=598,y=405,height=25)
 Project2_TechStack.insert(0,'Tech Stack Used')
 Project2_Tools=Entry(ws,
            bg='light grey',
@@ -495,7 +495,7 @@ Project2_Tools=Entry(ws,
            width=30
            
            )
-Project2_Tools.place(x=583,y=405,height=25)
+Project2_Tools.place(x=1123,y=405,height=25)
 Project2_Tools.insert(0,'Tools Used')
 Project2_Summary=Entry(ws,
            bg='light grey',
@@ -507,6 +507,7 @@ Project2_Summary=Entry(ws,
 Project2_Summary.place(x=7,y=435,height=40)
 Project2_Summary.insert(0,'Summary within 170 words')
 
+# College
 College=Entry(ws,
            bg='light grey',
            justify='center',
@@ -514,7 +515,7 @@ College=Entry(ws,
            width=30
            
            )
-College.place(x=7,y=515,height=25)
+College.place(x=18,y=515,height=25)
 College.insert(0,'Enter Your College Name')
 
 College_Degree=Entry(ws,
@@ -525,8 +526,42 @@ College_Degree=Entry(ws,
            
            )
 
-College_Degree.place(x=7,y=515,height=25)
+College_Degree.place(x=333,y=515,height=25)
 College_Degree.insert(0,'Enter Your College Degree Name')
+
+College_Time=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=30
+           
+           )
+
+College_Time.place(x=633,y=515,height=25)
+College_Time.insert(0,'Enter College Duration(ex:2019-2023)')
+
+College_Percentage=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=30
+           
+           )
+
+College_Percentage.place(x=930,y=515,height=25)
+College_Percentage.insert(0,'Enter College Percentage')
+
+College_Address=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=30
+           
+           )
+
+College_Address.place(x=1230,y=515,height=25)
+College_Address.insert(0,'Enter College Address')
+
 
 
 
