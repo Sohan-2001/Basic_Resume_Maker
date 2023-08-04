@@ -134,6 +134,9 @@ def print_pdf():
 
     pdf.set_xy(x=10, y= 160)
     pdf.multi_cell(w=120, h=7, txt='Education',fill=True)
+
+    pdf.set_xy(x=10, y= 247)
+    pdf.multi_cell(w=120, h=7, txt='Certificates/Awards',fill=True)
     
     # Headings
     pdf.set_font('Arial','B',12)
@@ -156,6 +159,12 @@ def print_pdf():
     pdf.multi_cell(w=0, h=5, txt='Tools Used:')
     pdf.set_xy(x=10, y= 126)
     pdf.multi_cell(w=0, h=5, txt='Summary:')
+    pdf.set_xy(x=10, y= 169)
+    pdf.multi_cell(w=0, h=5, txt='College:')
+    pdf.set_xy(x=10, y= 196)
+    pdf.multi_cell(w=0, h=5, txt='High School:')
+    pdf.set_xy(x=10, y= 223)
+    pdf.multi_cell(w=0, h=5, txt='School:')
 
     # Details
     pdf.set_fill_color(r= 240, g= 240, b = 240)
@@ -165,41 +174,79 @@ def print_pdf():
     # Project 1
     pdf.set_xy(x=25, y= 51)
     proname1=str(Project1_Name.get())
-    pdf.multi_cell(w=95, h=5, txt=proname1)
+    pdf.multi_cell(w=90, h=5, txt=proname1)
 
     protech1=str(Project1_TechStack.get())
     pdf.set_xy(x=35, y= 58)
-    pdf.multi_cell(w=95, h=5, txt=protech1)
+    pdf.multi_cell(w=90, h=5, txt=protech1)
 
     protool1=str(Project1_Tools.get())
     pdf.set_xy(x=35, y= 65)
-    pdf.multi_cell(w=95, h=5, txt=protool1)
+    pdf.multi_cell(w=90, h=5, txt=protool1)
 
     prosummary1=str(Project1_Summary.get())
     pdf.set_xy(x=32, y= 72)
-    pdf.multi_cell(w=95, h=5, txt=prosummary1)
+    pdf.multi_cell(w=90, h=5, txt=prosummary1)
 
     # Project 2
     pdf.set_xy(x=25, y= 105)
     proname2=str(Project2_Name.get())
-    pdf.multi_cell(w=95, h=5, txt=proname2)
+    pdf.multi_cell(w=90, h=5, txt=proname2)
 
     protech2=str(Project2_TechStack.get())
     pdf.set_xy(x=35, y= 112)
-    pdf.multi_cell(w=95, h=5, txt=protech2)
+    pdf.multi_cell(w=90, h=5, txt=protech2)
 
     protool2=str(Project2_Tools.get())
     pdf.set_xy(x=35, y= 119)
-    pdf.multi_cell(w=95, h=5, txt=protool2)
+    pdf.multi_cell(w=90, h=5, txt=protool2)
 
     prosummary2=str(Project2_Summary.get())
     pdf.set_xy(x=32, y= 126)
-    pdf.multi_cell(w=95, h=5, txt=prosummary2)
+    pdf.multi_cell(w=90, h=5, txt=prosummary2)
+
+    # Educations
+    pdf.set_xy(x=28, y= 168)
+    colgname=str(College.get())
+    colgdegr=str(College_Degree.get())
+    colgdur=str(College_Time.get())
+    colgper=str(College_Percentage.get())
+    colgaddr=str(College_Address.get())
+    pdf.multi_cell(w=90, h=7, txt=(colgname+', '+colgaddr+'; '+colgdegr+' ('+colgdur+'); CGPA: '+colgper))
 
 
+    pdf.set_xy(x=37, y= 195)
+    hsclname=str(HighSchool.get())
+    hscldegr=str(HighSchool_Degree.get())
+    hscldur=str(HighSchool_Time.get())
+    hsclper=str(HighSchool_Percentage.get())
+    hscladdr=str(HighSchool_Address.get())
+    pdf.multi_cell(w=90, h=7, txt=(hsclname+', '+hscladdr+'; '+hscldegr+' ('+hscldur+'); CGPA: '+hsclper))
+
+
+    pdf.set_xy(x=27, y= 222)
+    sclname=str(School.get())
+    scldegr=str(School_Degree.get())
+    scldur=str(School_Time.get())
+    sclper=str(School_Percentage.get())
+    scladdr=str(School_Address.get())
+    pdf.multi_cell(w=90, h=7, txt=(sclname+', '+scladdr+'; '+scldegr+' ('+scldur+'); CGPA: '+sclper))
+
+
+    # Certificates/Awards
+    pdf.set_xy(x=10, y= 256)
+    cer1=str(Certificate1.get())
+    cer_year1=str(Certificate1_time.get())
+    cer2=str(Certificate2.get())
+    cer_year2=str(Certificate2_time.get())
+    pdf.multi_cell(w=90, h=5, txt=cer1+' - '+cer_year1)
+    pdf.set_xy(x=10, y= 261)
+    pdf.multi_cell(w=90, h=5, txt=cer2+' - '+cer_year2)
 
     try:
-        pdf.output("C:\\Users\\sohan\\Downloads\\demo1.pdf")
+        p="sohan"
+        path="C:\\Users\\"+p+"\\Downloads\\demo1.pdf"
+        pdf.output(path)
         print('printed')
     except:
         print('\n\nerror\n\n')
@@ -562,7 +609,178 @@ College_Address=Entry(ws,
 College_Address.place(x=1230,y=515,height=25)
 College_Address.insert(0,'Enter College Address')
 
+# HighSchool
+HighSchool=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=30
+           
+           )
+HighSchool.place(x=18,y=542,height=25)
+HighSchool.insert(0,'HighSchool College Name')
 
+HighSchool_Degree=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=30
+           
+           )
+
+HighSchool_Degree.place(x=333,y=542,height=25)
+HighSchool_Degree.insert(0,'Enter HighSchool Degree Name')
+
+HighSchool_Time=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=30
+           
+           )
+
+HighSchool_Time.place(x=633,y=542,height=25)
+HighSchool_Time.insert(0,'HighSchool Duration(ex:2019-2023)')
+
+HighSchool_Percentage=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=30
+           
+           )
+
+HighSchool_Percentage.place(x=930,y=542,height=25)
+HighSchool_Percentage.insert(0,'HighSchool Percentage')
+
+HighSchool_Address=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=30
+           
+           )
+
+HighSchool_Address.place(x=1230,y=542,height=25)
+HighSchool_Address.insert(0,'HighSchool Address City')
+
+
+# School
+School=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=30
+           
+           )
+School.place(x=18,y=569,height=25)
+School.insert(0,'School Name')
+
+School_Degree=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=30
+           
+           )
+
+School_Degree.place(x=333,y=569,height=25)
+School_Degree.insert(0,'School Degree Name')
+
+School_Time=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=30
+           
+           )
+
+School_Time.place(x=633,y=569,height=25)
+School_Time.insert(0,'School Duration(ex:2019-2023)')
+
+School_Percentage=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=30
+           
+           )
+
+School_Percentage.place(x=930,y=569,height=25)
+School_Percentage.insert(0,'School Percentage')
+
+School_Address=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=30
+           
+           )
+
+School_Address.place(x=1230,y=569,height=25)
+School_Address.insert(0,'School Address City')
+
+Certificate1=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=30
+           
+           )
+Certificate1.place(x=18,y=620,height=25)
+Certificate1.insert(0,'Certificate or Award')
+
+Certificate1_time=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=20
+           
+           )
+Certificate1_time.place(x=268,y=620,height=25)
+Certificate1_time.insert(0,'Certificate/Award year')
+
+
+Certificate2=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=30
+           
+           )
+Certificate2.place(x=560,y=620,height=25)
+Certificate2.insert(0,'Certificate or Award')
+
+Certificate2_time=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=20
+           
+           )
+Certificate2_time.place(x=790,y=620,height=25)
+Certificate2_time.insert(0,'Certificate/Award year')
+
+
+Certificate3=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=30
+           
+           )
+Certificate3.place(x=1090,y=620,height=25)
+Certificate3.insert(0,'Certificate or Award')
+
+Certificate3_time=Entry(ws,
+           bg='light grey',
+           justify='center',
+           font=('Lucida',12),
+           width=20
+           
+           )
+Certificate3_time.place(x=1320,y=620,height=25)
+Certificate3_time.insert(0,'Certificate/Award year')
 
 
 # Menu
