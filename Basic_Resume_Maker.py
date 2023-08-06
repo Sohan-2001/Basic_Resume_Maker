@@ -1,11 +1,55 @@
 
-from tkinter import *
+'''
+def splash():
+    import tkinter as tk
+    from PIL import Image, ImageTk
+    from urllib.request import urlopen
+    from io import BytesIO
+    global new
+    new=tk.Tk()
+    new.state('zoomed')
 
+    URL = "https://user-images.githubusercontent.com/112119230/258652870-bcbd6076-887c-4309-a87e-d4ef35cd2e56.png"
+    u = urlopen(URL)
+    raw_data = u.read()
+    u.close()
+    im = Image.open(BytesIO(raw_data))
+    photo = ImageTk.PhotoImage(im)
+
+    label = tk.Label(image=photo)
+    label.image = photo
+    label.pack()
+    new.mainloop()
+    import time
+    for i in range(2,0,-1):
+        time.sleep(1)
+    new.destroy()
+    
+    
+
+splash()
+
+
+'''
+from tkinter import *
+from PIL import Image, ImageTk
+from urllib.request import urlopen
+from io import BytesIO
+import getpass
+user=getpass.getuser()    
 ws=Tk()
 ws.state('zoomed')
 ws.config(bg='#003537')
 ws.title('Basic Resume Maker')
 
+
+saved=Label(ws,
+            font=('MS UI Gothic',20),
+            bg='#003537',
+            fg='lavender',
+            text='Welcome '+user.title())
+
+saved.place(relx=0.5,rely=0.91,anchor=CENTER)
 # Make Pdf
 def print_pdf():
     
@@ -135,7 +179,7 @@ def print_pdf():
     pdf.set_xy(x=10, y= 160)
     pdf.multi_cell(w=120, h=7, txt='Education',fill=True)
 
-    pdf.set_xy(x=10, y= 247)
+    pdf.set_xy(x=10, y= 249)
     pdf.multi_cell(w=120, h=7, txt='Certificates/Awards',fill=True)
     
     # Headings
@@ -202,6 +246,7 @@ def print_pdf():
     pdf.multi_cell(w=90, h=5, txt=protool2)
 
     prosummary2=str(Project2_Summary.get())
+    
     pdf.set_xy(x=32, y= 126)
     pdf.multi_cell(w=90, h=5, txt=prosummary2)
 
@@ -234,40 +279,69 @@ def print_pdf():
 
 
     # Certificates/Awards
-    pdf.set_xy(x=10, y= 256)
+    pdf.set_xy(x=10, y= 258)
     cer1=str(Certificate1.get())
     cer_year1=str(Certificate1_time.get())
     cer2=str(Certificate2.get())
     cer_year2=str(Certificate2_time.get())
     pdf.multi_cell(w=90, h=5, txt=cer1+' - '+cer_year1)
-    pdf.set_xy(x=10, y= 261)
+    pdf.set_xy(x=10, y= 263)
     pdf.multi_cell(w=90, h=5, txt=cer2+' - '+cer_year2)
+    pdf.set_xy(x=10, y= 268 )
+    cer3=str(Certificate3.get())
+    cer_year3=str(Certificate3_time.get())
+    pdf.multi_cell(w=90, h=5, txt=cer3+' - '+cer_year3)
 
     try:
-        p="sohan"
-        path="C:\\Users\\"+p+"\\Downloads\\demo1.pdf"
-        pdf.output(path)
-        print('printed')
+        if len(prosummary2)>170:
+            Project2_Summary.configure(fg='lavender',bg='#911D21',font=('SimSun-ExtB',13))
+            Project2_Summary.delete(0,END)
+            Project2_Summary.insert(0,'!!! Summary length became more than 170 words !!!')
+
+        elif len(prosummary1)>170:
+            Project1_Summary.configure(fg='lavender',bg='#911D21',font=('SimSun-ExtB',13))
+            Project1_Summary.delete(0,END)
+            Project1_Summary.insert(0,'!!! Summary length became more than 170 words !!!')
+        else:
+            from tkinter import ttk, filedialog
+            from tkinter.filedialog import asksaveasfile
+            files = [('Basic_Resume', '*.pdf')]
+            file = asksaveasfile(filetypes = files, defaultextension = files)
+            path=(file.name)
+            pdf.output(path)
+            saved.config(text='Your Resume is saved into: '+path)
+            
+            
+
     except:
-        print('\n\nerror\n\n')
-    
+        saved.config(text='Some error occurred, try again')
+  
+
+
+
+
 
 
 # Dark Theme
 def dark_theme():
     ws.config(bg='black')
     Heading.config(bg='black',fg='white')
+    saved.config(bg='black')
 
 # Normal Theme
 def normal_theme():
     ws.config(bg='#003537')
     Heading.config(bg='#003537',fg='white')
+    saved.config(bg='#003537')
+
 
 # Help
 def need_help():
     import webbrowser
     url="https://wa.me/6295400770"
     webbrowser.open(url)
+
+
 
 
 # Label
@@ -287,6 +361,8 @@ Name=Entry(ws,
            )
 Name.place(x=7,y=50,height=25)
 Name.insert(0,'Enter Your Name')
+
+
 
 Surname=Entry(ws,
            bg='light grey',
@@ -798,8 +874,17 @@ theme.add_command(label='Normal',command=normal_theme)
 help=Menu(menubar,tearoff=0,background='lightyellow',activebackground='darkred')
 menubar.add_cascade(label='Help',menu=help)
 help.add_command(label='Help',command=need_help)
+def buy_coffee():
+    import webbrowser
+    url='https://drive.google.com/file/d/1tn1ZGg1-zDVgrHlEQIYr3U0NyX7aJtEJ/view?usp=drive_link'
+    webbrowser.open(url)
+help.add_command(label='Buy me a coffee',command=buy_coffee)
 
 ws.config(menu=menubar)
 
 
+
+
 ws.mainloop()
+
+
