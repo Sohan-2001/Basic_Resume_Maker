@@ -1,46 +1,42 @@
+from tkinter import *
+from PIL import Image, ImageTk
+from urllib.request import urlopen
+from io import BytesIO
 
-'''
+
+
 def splash():
-    import tkinter as tk
-    from PIL import Image, ImageTk
-    from urllib.request import urlopen
-    from io import BytesIO
-    global new
-    new=tk.Tk()
+    
+    new=Tk()
     new.state('zoomed')
-
+    new.title('Basic Resume Maker')
     URL = "https://user-images.githubusercontent.com/112119230/258652870-bcbd6076-887c-4309-a87e-d4ef35cd2e56.png"
     u = urlopen(URL)
     raw_data = u.read()
     u.close()
     im = Image.open(BytesIO(raw_data))
     photo = ImageTk.PhotoImage(im)
-
-    label = tk.Label(image=photo)
+    new.iconbitmap(r"C:\Users\sohan\Downloads\BRM-1(2).ico")
+    label = Label(image=photo)
     label.image = photo
     label.pack()
+    new.after(2000,lambda:new.destroy())
     new.mainloop()
-    import time
-    for i in range(2,0,-1):
-        time.sleep(1)
-    new.destroy()
     
-    
+
 
 splash()
 
 
-'''
-from tkinter import *
-from PIL import Image, ImageTk
-from urllib.request import urlopen
-from io import BytesIO
+
+
 import getpass
 user=getpass.getuser()    
 ws=Tk()
 ws.state('zoomed')
 ws.config(bg='#003537')
 ws.title('Basic Resume Maker')
+ws.iconbitmap(r"C:\Users\sohan\Downloads\BRM-1(2).ico")
 
 
 saved=Label(ws,
