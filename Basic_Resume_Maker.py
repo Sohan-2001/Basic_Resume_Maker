@@ -16,7 +16,7 @@ def splash():
     u.close()
     im = Image.open(BytesIO(raw_data))
     photo = ImageTk.PhotoImage(im)
-    new.iconbitmap(r"C:\Users\sohan\Downloads\BRM-1(2).ico")
+    
     label = Label(image=photo)
     label.image = photo
     label.pack()
@@ -33,16 +33,17 @@ splash()
 import getpass
 user=getpass.getuser()    
 ws=Tk()
+
 ws.state('zoomed')
-ws.config(bg='#003537')
+ws.config(bg='#F5F5DC')
 ws.title('Basic Resume Maker')
-ws.iconbitmap(r"C:\Users\sohan\Downloads\BRM-1(2).ico")
+
 
 
 saved=Label(ws,
             font=('MS UI Gothic',20),
-            bg='#003537',
-            fg='lavender',
+            bg='#F5F5DC',
+            fg='blue',
             text='Welcome '+user.title())
 
 saved.place(relx=0.5,rely=0.91,anchor=CENTER)
@@ -67,13 +68,12 @@ def print_pdf():
     photo=str(Photo.get())
     
     
-    Im='C:\\Users\\sohan\\Downloads\\WhatsApp Image 2023-06-27 at 22.17.40.jpg'
-    '''
+    Im=''
     for i in photo:
         Im+=i
         if i=="\\":
             Im+="\\"
-            '''
+    
     pdf.set_xy(x=130, y= 42)
     pdf.set_fill_color(245, 194, 193)
     pdf.cell(w=70, h=234, txt='', ln=0, fill=True)
@@ -299,6 +299,7 @@ def print_pdf():
             Project1_Summary.delete(0,END)
             Project1_Summary.insert(0,'!!! Summary length became more than 170 words !!!')
         else:
+            
             from tkinter import ttk, filedialog
             from tkinter.filedialog import asksaveasfile
             files = [('Basic_Resume', '*.pdf')]
@@ -306,6 +307,7 @@ def print_pdf():
             path=(file.name)
             pdf.output(path)
             saved.config(text='Your Resume is saved into: '+path)
+         
             
             
 
@@ -321,14 +323,14 @@ def print_pdf():
 # Dark Theme
 def dark_theme():
     ws.config(bg='black')
-    Heading.config(bg='black',fg='white')
-    saved.config(bg='black')
+    Heading.config(bg='black',fg='#DAF7A6')
+    saved.config(bg='black',fg='grey')
 
 # Normal Theme
 def normal_theme():
-    ws.config(bg='#003537')
-    Heading.config(bg='#003537',fg='white')
-    saved.config(bg='#003537')
+    ws.config(bg='#F5F5DC')
+    Heading.config(bg='#F5F5DC',fg='black')
+    saved.config(bg='#F5F5DC',fg='blue')
 
 
 # Help
@@ -343,13 +345,14 @@ def need_help():
 # Label
 Heading=Label(ws,
               text='B a s i c   R E S U M E   M a k e r',
-              bg='#003537',
-              fg='white',
+              bg='#F5F5DC',
+              fg='black',
               font=('Times New Roman',20))
 Heading.place(relx=0.5,rely=0.025,anchor=CENTER)
 
 Name=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
+             
            justify='center',
            font=('Lucida',12),
            width=30
@@ -361,7 +364,7 @@ Name.insert(0,'Enter Your Name')
 
 
 Surname=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -371,7 +374,7 @@ Surname.place(x=295,y=50,height=25)
 Surname.insert(0,'Enter Your Surname')
 
 Role=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -381,7 +384,7 @@ Role.place(x=583,y=50,height=25)
 Role.insert(0,"Enter Your Role (ex: 'Student')")
 
 Photo=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=72
@@ -391,7 +394,7 @@ Photo.place(x=871,y=50,height=25)
 Photo.insert(0,"Paste your photo's path from file explorer")
 
 City=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -401,7 +404,7 @@ City.place(x=7,y=100,height=25)
 City.insert(0,"Enter your city name")
 
 Country=Entry(ws,
-            bg='light grey',
+              bg='#f2f2f2', fg='#333333',
             justify='center',
             font=('Lucida',12),
             width=30
@@ -411,7 +414,7 @@ Country.place(x=295,y=100,height=25)
 Country.insert(0,"Enter your Country name")
 
 Pin_Code=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -421,7 +424,7 @@ Pin_Code.place(x=583,y=100,height=25)
 Pin_Code.insert(0,"Enter your PIN or POSTAL CODE")
 
 Email=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=72
@@ -431,7 +434,7 @@ Email.place(x=871,y=100,height=25)
 Email.insert(0,"Enter your email address")
 
 Phone=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -441,7 +444,7 @@ Phone.place(x=7,y=150,height=25)
 Phone.insert(0,"Enter your conatact number")
 
 LinkedIn=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=70
@@ -451,7 +454,7 @@ LinkedIn.place(x=295,y=150,height=25)
 LinkedIn.insert(0,"Enter your LinkedIn account link")
 
 GitHub=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=64
@@ -467,7 +470,7 @@ options = [
 ]
 
 Skill1=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -481,7 +484,7 @@ drop1 = OptionMenu( ws , clicked1 , *options )
 drop1.place(x=298,y=220,height=25)
 
 Skill2=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -495,7 +498,7 @@ drop2 = OptionMenu( ws , clicked2 , *options )
 drop2.place(x=846,y=220,height=25)
 
 Skill3=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -509,7 +512,7 @@ drop3 = OptionMenu( ws , clicked3 , *options )
 drop3.place(x=1401,y=220,height=25)
 
 Language1=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -523,7 +526,7 @@ drop4 = OptionMenu( ws , clicked4 , *options )
 drop4.place(x=298,y=250,height=25)
 
 Language2=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -537,7 +540,7 @@ drop5 = OptionMenu( ws , clicked5 , *options )
 drop5.place(x=846,y=250,height=25)
 
 Language3=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -553,7 +556,7 @@ drop6.place(x=1401,y=250,height=25)
 
 
 Project1_Name=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -562,7 +565,7 @@ Project1_Name=Entry(ws,
 Project1_Name.place(x=50,y=320,height=25)
 Project1_Name.insert(0,'Enter Your Best Project Name')
 Project1_TechStack=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -571,7 +574,7 @@ Project1_TechStack=Entry(ws,
 Project1_TechStack.place(x=598,y=320,height=25)
 Project1_TechStack.insert(0,'Tech Stack Used')
 Project1_Tools=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -580,7 +583,7 @@ Project1_Tools=Entry(ws,
 Project1_Tools.place(x=1123,y=320,height=25)
 Project1_Tools.insert(0,'Tools Used')
 Project1_Summary=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=168
@@ -590,7 +593,7 @@ Project1_Summary.place(x=7,y=350,height=40)
 Project1_Summary.insert(0,'Summary within 170 words')
 
 Project2_Name=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -599,7 +602,7 @@ Project2_Name=Entry(ws,
 Project2_Name.place(x=50,y=405,height=25)
 Project2_Name.insert(0,'Enter Your Another Best Project Name')
 Project2_TechStack=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -608,7 +611,7 @@ Project2_TechStack=Entry(ws,
 Project2_TechStack.place(x=598,y=405,height=25)
 Project2_TechStack.insert(0,'Tech Stack Used')
 Project2_Tools=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -617,7 +620,7 @@ Project2_Tools=Entry(ws,
 Project2_Tools.place(x=1123,y=405,height=25)
 Project2_Tools.insert(0,'Tools Used')
 Project2_Summary=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=168
@@ -628,7 +631,7 @@ Project2_Summary.insert(0,'Summary within 170 words')
 
 # College
 College=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -638,7 +641,7 @@ College.place(x=18,y=515,height=25)
 College.insert(0,'Enter Your College Name')
 
 College_Degree=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -649,7 +652,7 @@ College_Degree.place(x=333,y=515,height=25)
 College_Degree.insert(0,'Enter Your College Degree Name')
 
 College_Time=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -660,7 +663,7 @@ College_Time.place(x=633,y=515,height=25)
 College_Time.insert(0,'Enter College Duration(ex:2019-2023)')
 
 College_Percentage=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -671,7 +674,7 @@ College_Percentage.place(x=930,y=515,height=25)
 College_Percentage.insert(0,'Enter College Percentage')
 
 College_Address=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -683,7 +686,7 @@ College_Address.insert(0,'Enter College Address')
 
 # HighSchool
 HighSchool=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -693,7 +696,7 @@ HighSchool.place(x=18,y=542,height=25)
 HighSchool.insert(0,'HighSchool College Name')
 
 HighSchool_Degree=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -704,7 +707,7 @@ HighSchool_Degree.place(x=333,y=542,height=25)
 HighSchool_Degree.insert(0,'Enter HighSchool Degree Name')
 
 HighSchool_Time=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -715,7 +718,7 @@ HighSchool_Time.place(x=633,y=542,height=25)
 HighSchool_Time.insert(0,'HighSchool Duration(ex:2019-2023)')
 
 HighSchool_Percentage=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -726,7 +729,7 @@ HighSchool_Percentage.place(x=930,y=542,height=25)
 HighSchool_Percentage.insert(0,'HighSchool Percentage')
 
 HighSchool_Address=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -739,7 +742,7 @@ HighSchool_Address.insert(0,'HighSchool Address City')
 
 # School
 School=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -749,7 +752,7 @@ School.place(x=18,y=569,height=25)
 School.insert(0,'School Name')
 
 School_Degree=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -760,7 +763,7 @@ School_Degree.place(x=333,y=569,height=25)
 School_Degree.insert(0,'School Degree Name')
 
 School_Time=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -771,7 +774,7 @@ School_Time.place(x=633,y=569,height=25)
 School_Time.insert(0,'School Duration(ex:2019-2023)')
 
 School_Percentage=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -782,7 +785,7 @@ School_Percentage.place(x=930,y=569,height=25)
 School_Percentage.insert(0,'School Percentage')
 
 School_Address=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -793,7 +796,7 @@ School_Address.place(x=1230,y=569,height=25)
 School_Address.insert(0,'School Address City')
 
 Certificate1=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -803,7 +806,7 @@ Certificate1.place(x=18,y=620,height=25)
 Certificate1.insert(0,'Certificate or Award')
 
 Certificate1_time=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=20
@@ -814,7 +817,7 @@ Certificate1_time.insert(0,'Certificate/Award year')
 
 
 Certificate2=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -824,7 +827,7 @@ Certificate2.place(x=560,y=620,height=25)
 Certificate2.insert(0,'Certificate or Award')
 
 Certificate2_time=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=20
@@ -835,7 +838,7 @@ Certificate2_time.insert(0,'Certificate/Award year')
 
 
 Certificate3=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=30
@@ -845,7 +848,7 @@ Certificate3.place(x=1090,y=620,height=25)
 Certificate3.insert(0,'Certificate or Award')
 
 Certificate3_time=Entry(ws,
-           bg='light grey',
+             bg='#f2f2f2', fg='#333333',
            justify='center',
            font=('Lucida',12),
            width=20
