@@ -1,5 +1,6 @@
 # Basic_Resume_Maker
 ![IMG_20230806_211916](https://github.com/Sohan-2001/Basic_Resume_Maker/assets/112119230/bcbd6076-887c-4309-a87e-d4ef35cd2e56)
+![My project-1](https://github.com/Sohan-2001/Basic_Resume_Maker/assets/112119230/c31659c5-0e8a-4f28-8bce-bd1b1b46d8cd)
 
 # Splash
 ![image](https://github.com/Sohan-2001/Basic_Resume_Maker/assets/112119230/86e80877-8519-46cd-b128-d9929ab17a09)
