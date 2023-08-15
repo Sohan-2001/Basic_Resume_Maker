@@ -18,10 +18,12 @@ def splash():
     photo = ImageTk.PhotoImage(im)
     
     label = Label(image=photo)
-    label.image = photo
     label.pack()
     new.after(2000,lambda:new.destroy())
     new.mainloop()
+
+
+
     
 
 
@@ -66,9 +68,12 @@ def print_pdf():
     pdf.set_xy(x=10, y= 27)
     pdf.cell(w=0, h=12, txt=role, ln=1, fill=True)
     photo=str(Photo.get())
-    
+    if len(photo)==0 or photo=="Paste your photo's path from file explorer":
+        saved.config(text='Please enter photo path correctly in JPG or JPEG format')
+    Photo.config(fg='white',bg='#911D21',font=('SimSun-ExtB',13))
     
     Im=''
+    
     for i in photo:
         Im+=i
         if i=="\\":
@@ -290,12 +295,12 @@ def print_pdf():
 
     try:
         if len(prosummary2)>170:
-            Project2_Summary.configure(fg='lavender',bg='#911D21',font=('SimSun-ExtB',13))
+            Project2_Summary.configure(fg='white',bg='#911D21',font=('SimSun-ExtB',13))
             Project2_Summary.delete(0,END)
             Project2_Summary.insert(0,'!!! Summary length became more than 170 words !!!')
 
         elif len(prosummary1)>170:
-            Project1_Summary.configure(fg='lavender',bg='#911D21',font=('SimSun-ExtB',13))
+            Project1_Summary.configure(fg='white',bg='#911D21',font=('SimSun-ExtB',13))
             Project1_Summary.delete(0,END)
             Project1_Summary.insert(0,'!!! Summary length became more than 170 words !!!')
         else:
@@ -682,7 +687,7 @@ College_Address=Entry(ws,
            )
 
 College_Address.place(x=1230,y=515,height=25)
-College_Address.insert(0,'Enter College Address')
+College_Address.insert(0,'Enter College City')
 
 # HighSchool
 HighSchool=Entry(ws,
@@ -870,9 +875,30 @@ menubar.add_cascade(label='Theme',menu=theme)
 theme.add_command(label='Dark',command=dark_theme)
 theme.add_command(label='Normal',command=normal_theme)
 
+
+def How_To_Use():
+    
+    new1=Toplevel(ws)
+    new1.state('zoomed')
+    new1.title('Basic Resume Maker')
+    URL = "https://user-images.githubusercontent.com/112119230/260842059-194a1447-d54b-4473-a088-ddb110deaae3.png"
+    u = urlopen(URL)
+    raw_data = u.read()
+    u.close()
+    im = Image.open(BytesIO(raw_data))
+    photo = ImageTk.PhotoImage(im)
+    label = Label(new1,
+                  bg='black',
+                  image=photo)
+    label.pack(fill=BOTH, expand=True)
+    new1.mainloop()
+
+
 help=Menu(menubar,tearoff=0,background='lightyellow',activebackground='darkred')
 menubar.add_cascade(label='Help',menu=help)
-help.add_command(label='Help',command=need_help)
+help.add_command(label='How To Use',command=How_To_Use)
+help.add_command(label='Ask Help',command=need_help)
+
 def buy_coffee():
     import webbrowser
     url='https://drive.google.com/file/d/1tn1ZGg1-zDVgrHlEQIYr3U0NyX7aJtEJ/view?usp=drive_link'
@@ -885,5 +911,3 @@ ws.config(menu=menubar)
 
 
 ws.mainloop()
-
-
