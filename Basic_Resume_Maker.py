@@ -69,7 +69,7 @@ def print_pdf():
     pdf.cell(w=0, h=12, txt=role, ln=1, fill=True)
     photo=str(Photo.get())
     if len(photo)==0 or photo=="Paste your photo's path from file explorer":
-        saved.config(text='Please enter photo path correctly in JPG or JPEG format')
+        saved.config(text='Please enter photo path correctly in JPG or JPEG format\n\nFor better understanding see "How To Use" from "Help"')
     Photo.config(fg='white',bg='#911D21',font=('SimSun-ExtB',13))
     
     Im=''
@@ -868,7 +868,7 @@ menubar=Menu(ws)
 
 file=Menu(menubar,tearoff=0,background='lightyellow',activebackground='darkred')
 menubar.add_cascade(label='File',menu=file)
-file.add_command(label='print',command=print_pdf)
+file.add_command(label='Print',command=print_pdf)
 
 theme=Menu(menubar,tearoff=0,background='lightyellow',activebackground='darkred')
 menubar.add_cascade(label='Theme',menu=theme)
@@ -903,7 +903,7 @@ def buy_coffee():
     import webbrowser
     url='https://drive.google.com/file/d/1tn1ZGg1-zDVgrHlEQIYr3U0NyX7aJtEJ/view?usp=drive_link'
     webbrowser.open(url)
-help.add_command(label='Buy me a coffee',command=buy_coffee)
+help.add_command(label='Buy Me A Aoffee',command=buy_coffee)
 
 ws.config(menu=menubar)
 
