@@ -10,6 +10,7 @@ def splash():
     new=Tk()
     new.state('zoomed')
     new.title('Basic Resume Maker')
+    
     URL = "https://user-images.githubusercontent.com/112119230/258652870-bcbd6076-887c-4309-a87e-d4ef35cd2e56.png"
     u = urlopen(URL)
     raw_data = u.read()
@@ -27,7 +28,7 @@ def splash():
     
 
 
-splash()
+#splash()
 
 
 
@@ -42,13 +43,13 @@ ws.title('Basic Resume Maker')
 
 
 
-saved=Label(ws,
+saved=Label(ws,width=108, height=4,
             font=('MS UI Gothic',20),
-            bg='#F5F5DC',
-            fg='blue',
-            text='Welcome '+user.title())
+            bg='#EBEBBC',
+            fg='#737344',
+            text='Welcome '+user.title()+'\n\nThis is a Basic Resume Maker made by Sohan Karfa')
 
-saved.place(relx=0.5,rely=0.91,anchor=CENTER)
+saved.place(relx=0.5,rely=0.92,anchor=CENTER)
 # Make Pdf
 def print_pdf():
     
@@ -68,9 +69,8 @@ def print_pdf():
     pdf.set_xy(x=10, y= 27)
     pdf.cell(w=0, h=12, txt=role, ln=1, fill=True)
     photo=str(Photo.get())
-    if len(photo)==0 or photo=="Paste your photo's path from file explorer":
-        saved.config(text='Please enter photo path correctly in JPG or JPEG format\n\nFor better understanding see "How To Use" from "Help"')
-    Photo.config(fg='white',bg='#911D21',font=('SimSun-ExtB',13))
+    
+    
     
     Im=''
     
@@ -82,8 +82,15 @@ def print_pdf():
     pdf.set_xy(x=130, y= 42)
     pdf.set_fill_color(245, 194, 193)
     pdf.cell(w=70, h=234, txt='', ln=0, fill=True)
-    pdf.image(Im, 
-          x = 146, y = 50, w = 40, h = 50, type = 'JPG')
+    all_ok=0
+    try:
+        Photo.config(bg='#f2f2f2', fg='#333333',font=('Lucida',12))
+        pdf.image(Im, 
+            x = 146, y = 50, w = 40, h = 50, type = 'JPG')
+        all_ok=1
+    except:
+        Photo.config(fg='white',bg='#911D21')
+        saved.config(text='Please enter photo path correctly in JPG or JPEG format\n\nFor better understanding see "How To Use" from "Help"')
     pdf.set_font('Times','B',17)
     pdf.set_text_color(r=100, g=0, b=0)
 
@@ -295,23 +302,25 @@ def print_pdf():
 
     try:
         if len(prosummary2)>170:
-            Project2_Summary.configure(fg='white',bg='#911D21',font=('SimSun-ExtB',13))
+            Project2_Summary.configure(fg='white',bg='#911D21')
             Project2_Summary.delete(0,END)
             Project2_Summary.insert(0,'!!! Summary length became more than 170 words !!!')
 
         elif len(prosummary1)>170:
-            Project1_Summary.configure(fg='white',bg='#911D21',font=('SimSun-ExtB',13))
+            Project1_Summary.configure(fg='white',bg='#911D21')
             Project1_Summary.delete(0,END)
             Project1_Summary.insert(0,'!!! Summary length became more than 170 words !!!')
         else:
-            
-            from tkinter import ttk, filedialog
-            from tkinter.filedialog import asksaveasfile
-            files = [('Basic_Resume', '*.pdf')]
-            file = asksaveasfile(filetypes = files, defaultextension = files)
-            path=(file.name)
-            pdf.output(path)
-            saved.config(text='Your Resume is saved into: '+path)
+            if all_ok==1:
+                Project1_Summary.configure(bg='#f2f2f2', fg='#333333')
+                Project2_Summary.configure(bg='#f2f2f2', fg='#333333')
+                from tkinter import ttk, filedialog
+                from tkinter.filedialog import asksaveasfile
+                files = [('Basic_Resume', '*.pdf')]
+                file = asksaveasfile(filetypes = files, defaultextension = files)
+                path=(file.name)
+                pdf.output(path)
+                saved.config(text='Your Resume is saved into: '+path)
          
             
             
@@ -329,13 +338,13 @@ def print_pdf():
 def dark_theme():
     ws.config(bg='black')
     Heading.config(bg='black',fg='#DAF7A6')
-    saved.config(bg='black',fg='grey')
+    saved.config(bg='#3b3b3b',fg='grey')
 
 # Normal Theme
 def normal_theme():
     ws.config(bg='#F5F5DC')
     Heading.config(bg='#F5F5DC',fg='black')
-    saved.config(bg='#F5F5DC',fg='blue')
+    saved.config(bg='#EBEBBC',fg='#737344')
 
 
 # Help
