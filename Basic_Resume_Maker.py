@@ -10,16 +10,21 @@ def splash():
     new=Tk()
     new.state('zoomed')
     new.title('Basic Resume Maker')
+    try:
+        URL = "https://user-images.githubusercontent.com/112119230/258652870-bcbd6076-887c-4309-a87e-d4ef35cd2e56.png"
+        u = urlopen(URL)
+        raw_data = u.read()
+        u.close()
+        im = Image.open(BytesIO(raw_data))
+        photo = ImageTk.PhotoImage(im)
+        label = Label(image=photo)
+        label.pack()
+    except:
+        label=Label(text='Welcome, We See You Are Offline So The Splash Image Failed To Load, But You Can Use It Seamlessly',
+                    font=('Arial',20))
+        label.place(relx=0.5,rely=0.5,anchor=CENTER)
     
-    URL = "https://user-images.githubusercontent.com/112119230/258652870-bcbd6076-887c-4309-a87e-d4ef35cd2e56.png"
-    u = urlopen(URL)
-    raw_data = u.read()
-    u.close()
-    im = Image.open(BytesIO(raw_data))
-    photo = ImageTk.PhotoImage(im)
     
-    label = Label(image=photo)
-    label.pack()
     new.after(2000,lambda:new.destroy())
     new.mainloop()
 
@@ -28,7 +33,7 @@ def splash():
     
 
 
-#splash()
+splash()
 
 
 
@@ -56,7 +61,9 @@ def print_pdf():
     name=str(Name.get())
     surname=str(Surname.get())
     role=str(Role.get())
+    
     from fpdf import FPDF
+    
     pdf=FPDF()
     pdf=FPDF(orientation='P',unit='mm',format='A4')
     pdf.add_page()
