@@ -2,11 +2,7 @@ from tkinter import *
 from PIL import Image, ImageTk
 from urllib.request import urlopen
 from io import BytesIO
-
-
-
 def splash():
-    
     new=Tk()
     new.state('zoomed')
     new.title('Basic Resume Maker')
@@ -23,15 +19,8 @@ def splash():
         label=Label(text='Welcome, We See You Are Offline So The Splash Image Failed To Load, But You Can Use It Seamlessly',
                     font=('Arial',20))
         label.place(relx=0.5,rely=0.5,anchor=CENTER)
-    
-    
     new.after(2000,lambda:new.destroy())
     new.mainloop()
-
-
-
-    
-
 
 splash()
 
