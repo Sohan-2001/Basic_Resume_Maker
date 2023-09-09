@@ -13,7 +13,7 @@
 # Summary Warning
 ![BRM Summary Warning](https://github.com/Sohan-2001/Basic_Resume_Maker/assets/112119230/21000229-10bc-4991-8f2b-d867cb230d11)
 # File Saving
-![Saving PDF BRM](https://github.com/Sohan-2001/Basic_Resume_Maker/assets/112119230/42beb027-6d22-48bd-b2dd
+![Saving PDF BRM](https://github.com/Sohan-2001/Basic_Resume_Maker/assets/112119230/9434351d-1949-4781-b671-93f42e15d9b2)
 # File In Explorer
 ![image](https://github.com/Sohan-2001/Basic_Resume_Maker/assets/112119230/da72c2e2-0beb-4b2a-9497-ff23330b78cc)
 # PDF Opened In Edge
